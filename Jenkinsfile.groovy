@@ -10,7 +10,7 @@ podTemplate(label: 'helm-template' , cloud: 'k8s' , containers: [
     node('helm-template') {
         stage('Build Chart & push it to Artifactory') {
             latestHelmBuildId =  getLatestHelmChartBuildNumber()
-            distributeToEdgeNodes("myapp-distribution-bundle" , latestHelmBuildId ,"http://35.222.153.88")
+            distributeToEdgeNodes("demo-app" , latestHelmBuildId ,env.DISTRIBUTION_SERVICE_HOST)
         }
     }
 }
