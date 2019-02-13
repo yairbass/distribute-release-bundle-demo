@@ -57,7 +57,7 @@ def distributeToEdgeNodes (name ,version, distribution_url) {
       "dry_run":"false",
       "distribution_rules": [
         {
-            "service_name": "edge*"
+            "service_name": "*edge*"
         }
       ]
       }"""
