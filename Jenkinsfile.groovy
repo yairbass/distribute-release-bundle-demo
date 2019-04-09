@@ -46,7 +46,7 @@ private executeAql(aqlString) {
 
 
 def getLatestHelmChartBuildNumber () {
-    def aqlString = 'builds.find ({"name": {"$eq":"demo-helm-app-demo"}}).sort({"$desc":["created"]}).limit(1)'
+    def aqlString = 'builds.find ({"name": {"$eq":"helm-app-demo"}}).sort({"$desc":["created"]}).limit(1)'
     results = executeAql(aqlString)
 
     return results['build.number']
