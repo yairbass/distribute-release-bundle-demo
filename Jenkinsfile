@@ -10,7 +10,7 @@ podTemplate(label: 'helm-template' , cloud: 'k8s' , containers: [
     node('helm-template') {
         stage('Build Chart & push it to Artifactory') {
             latestHelmBuildId =  getLatestHelmChartBuildNumber()
-            distributeToEdgeNodes("demo-app" , latestHelmBuildId ,env.DISTRIBUTION_SERVICE_HOST)
+            distributeToEdgeNodes("petclinic-app" , latestHelmBuildId ,env.DISTRIBUTION_SERVICE_HOST)
         }
     }
 }
@@ -46,7 +46,7 @@ private executeAql(aqlString) {
 
 
 def getLatestHelmChartBuildNumber () {
-    def aqlString = 'builds.find ({"name": {"$eq":"helm-app-demo"}}).sort({"$desc":["created"]}).limit(1)'
+    def aqlString = 'builds.find ({"name": {"$eq":"helm-petclinic"}}).sort({"$desc":["created"]}).limit(1)'
     results = executeAql(aqlString)
 
     return results['build.number']
